@@ -3,10 +3,57 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:HtpcShell"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+        Title="HTPC Shell"
+        Height="450"
+        Width="800"
+        WindowState="Maximized"
+        WindowStyle="None">
+  <Window.Resources>
+    <SolidColorBrush x:Key="Background" Color="#1D1A31" />
+    <SolidColorBrush x:Key="ButtonBackground" Color="#4D2D52" />
+    <SolidColorBrush x:Key="ButtonBorder" Color="#9A4C95" />
+    <SolidColorBrush x:Key="ButtonFocusedBackground" Color="#9A4C95" />
+    <SolidColorBrush x:Key="ButtonFocusedBorder" Color="#F08CAE" />
+    <Style TargetType="{x:Type Button}">
+      <Setter Property="Height" Value="112" />
+      <Setter Property="Width" Value="200" />
+      <Setter Property="Margin" Value="50" />
+      <Setter Property="FontSize" Value="24" />
+      <Setter Property="Foreground" Value="#C1A5A9" />
+      <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type Button}">
+            <Border x:Name="Border" Background="{StaticResource ButtonBackground}" BorderBrush="{StaticResource ButtonBorder}" BorderThickness="5" CornerRadius="15">
+              <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsFocused" Value="True">
+                <Setter TargetName="Border" Property="Background" Value="{StaticResource ButtonFocusedBackground}" />
+                <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource ButtonFocusedBorder}" />
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </Window.Resources>
+  <Window.Background>
+    <StaticResource ResourceKey="Background" />
+  </Window.Background>
+  <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <ItemsControl>
+      <ItemsControl.ItemsPanel>
+        <ItemsPanelTemplate>
+          <WrapPanel />
+        </ItemsPanelTemplate>
+      </ItemsControl.ItemsPanel>
+      <Button Content="Plex" />
+      <Button Content="Kodi" />
+      <Button Content="Minecraft" />
+      <Button Content="Elite Dangerous" />
+      <Button Content="Star Citizen" />
+    </ItemsControl>
+  </ScrollViewer>
 </Window>
